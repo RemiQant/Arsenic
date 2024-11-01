@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {Client, IntentsBitField} = require('discord.js');
+const { Client, IntentsBitField } = require('discord.js');
 
 const token = process.env.DISCORD_TOKEN;
 
@@ -16,6 +16,13 @@ client.on('ready', (c) => {
     console.log(`${c.user.tag} is online`);
 });
 
+// slash commands
+client.on('interactionCreate', (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
 
+    if (interaction.commandName === 'hey') {
+        interaction.reply('hey!');
+    }
+ });
 
 client.login(token);
