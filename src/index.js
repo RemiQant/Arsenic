@@ -1,5 +1,5 @@
-const {Client, IntentsBitField} = require('discord.js');
 require('dotenv').config();
+const {Client, IntentsBitField} = require('discord.js');
 
 const token = process.env.DISCORD_TOKEN;
 
@@ -12,8 +12,10 @@ const client = new Client({
     ]
 });
 
-client.once('ready', () => {
-    console.log('Bot is ready!');
+client.on('ready', (c) => {
+    console.log(`${c.user.tag} is online`);
 });
+
+
 
 client.login(token);
